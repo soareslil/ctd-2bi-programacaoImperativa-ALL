@@ -1,0 +1,23 @@
+{
+  "name": "AULA_5_funcoes",
+  "version": "1.0.0",
+  "description": "<br>",
+  "main": "funcoes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soareslil/ctd-2bi-programacaoImperativa-a5.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/soareslil/ctd-2bi-programacaoImperativa-a5/issues"
+  },
+  "homepage": "https://github.com/soareslil/ctd-2bi-programacaoImperativa-a5#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
