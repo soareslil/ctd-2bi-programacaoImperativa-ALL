@@ -6,7 +6,7 @@ function contaBancaria(numConta, tipoConta, saldo, titular) {
 }
 
 const abigael = new contaBancaria(
-  5486273622,
+  '5486273622',
   "Conta Corrente",
   27771,
   "Abigael Natte"
@@ -14,7 +14,7 @@ const abigael = new contaBancaria(
 // console.log(abigael);
 
 const ramon = new contaBancaria(
-  1183971869,
+  '1183971869',
   "Conta Poupança",
   8675,
   "Ramon Connell"
@@ -22,7 +22,7 @@ const ramon = new contaBancaria(
 // console.log(ramon);
 
 const jarret = new contaBancaria(
-  9582019689,
+  '9582019689',
   "Conta Poupança",
   27363,
   "Jarret Lafuente"
@@ -30,7 +30,7 @@ const jarret = new contaBancaria(
 // console.log(jarret);
 
 const ansel = new contaBancaria(
-  1761924656,
+  '1761924656',
   "Conta Poupança",
   32415,
   "Ansel Ardley"
@@ -38,7 +38,7 @@ const ansel = new contaBancaria(
 // console.log(ansel);
 
 const jacki = new contaBancaria(
-  7401971607,
+  '7401971607',
   "Conta Poupança",
   18789,
   "Jacki Shurmer"
@@ -46,7 +46,7 @@ const jacki = new contaBancaria(
 // console.log(jacki);
 
 const jobi = new contaBancaria(
-  630841470,
+  '630841470',
   "Conta Corrente",
   28776,
   "Jobi Mawtus"
@@ -54,7 +54,7 @@ const jobi = new contaBancaria(
 // console.log(jobi);
 
 const thomasin = new contaBancaria(
-  4223508636,
+  '4223508636',
   "Conta Corrente",
   2177,
   "Thomasin Latour"
@@ -62,7 +62,7 @@ const thomasin = new contaBancaria(
 // console.log(thomasin);
 
 const lonnie = new contaBancaria(
-  185979521,
+  '185979521',
   "Conta Poupança",
   25994,
   "Lonnie Verheijden"
@@ -70,7 +70,7 @@ const lonnie = new contaBancaria(
 // console.log(lonnie);
 
 const alonso = new contaBancaria(
-  3151956165,
+  '3151956165',
   "Conta Corrente",
   7601,
   "Alonso Wannan"
@@ -78,7 +78,7 @@ const alonso = new contaBancaria(
 // console.log(alonso);
 
 const benedite = new contaBancaria(
-  2138105881,
+  '2138105881',
   "Conta Poupança",
   33196,
   "Bendite Huggett"
@@ -90,29 +90,29 @@ const benedite = new contaBancaria(
 // })
 // console.log(listaObjt);
 
-function listaArrayObjt(array) {
-  let resultado = [];
-  for (let index = 0; index < array.length; index++) {
-    resultado.push(array[index]);
-  }
-  return resultado;
-}
+// function listaArrayObjt(array) {
+//   let resultado = [];
+//   for (let index = 0; index < array.length; index++) {
+//     resultado.push(array[index]);
+//   }
+//   return resultado;
+// }
 
-const resListArrObj = listaArrayObjt([
-  abigael,
-  ramon,
-  jarret,
-  ansel,
-  jacki,
-  jobi,
-  thomasin,
-  lonnie,
-  alonso,
-  benedite,
-]);
+// const resListArrObj = listaArrayObjt([
+//   abigael,
+//   ramon,
+//   jarret,
+//   ansel,
+//   jacki,
+//   jobi,
+//   thomasin,
+//   lonnie,
+//   alonso,
+//   benedite,
+// ]);
 // console.log('aqui',resListArrObj);
 
-const listaCli = [
+const listaClientes = [
   abigael,
   ramon,
   jarret,
@@ -126,17 +126,35 @@ const listaCli = [
 ];
 
 let banco = {
-  clientes: listaCli,
+  clientes: listaClientes,
+  cadastrarCliente(numConta, tipoConta, saldo, titular){
+    let cliente = new contaBancaria(numConta, tipoConta, saldo, titular);
+    this.clientes.push(cliente);
+  },
   consultarCliente(titular) {
-    let resultado = [];
     for (let i = 0; i < this.clientes.length; i++) {
-      let titularBuscado = this.clientes[i].titular;
-      if (titularBuscado === titular) {
-        return this.clientes[i];
+      const cliente = this.clientes[i];
+      if (cliente.titular === titular) {
+        console.log('cliente encontrado:  '+ cliente.titular)
+        return cliente;
       }
     }
-    return resultado;
+    console.log('Cliente não encontrado!');
   },
-};
+  deposito(titular,valorDeposito){
+    let cliente = this.consultarCliente(titular);
+    if(cliente){
+    cliente.saldo += valorDeposito;
+    console.log('Deposito realizado, seu novo saldo é:  ' + cliente.saldo);
+    }else{
+   console.log('deposito nao pode ser realizado');
+  }
+},
 
-console.log("ObjtBanco + array", banco.consultarCliente("Alonso Wannan"));
+
+
+// Crie outro método chamado depósito que receberá como parâmetros, 
+// o titular da conta e uma quantidade de dinheiro para depositar.
+//  O método deve chegar à conta correspondente e, em seguida, adicionar 
+//  a quantidade de dinheiro para depositar o saldo da conta, então você deve
+//   dar um aviso pelo console com a mensagem "Depósito realizado, seu novo saldo é: xxx" .
